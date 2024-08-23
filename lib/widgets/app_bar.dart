@@ -36,8 +36,21 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   color: dark ? AppColors.colorWhite : AppColors.colorBlack,
                 ))
             : leadingIcon != null
-                ? IconButton(
-                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                ? GestureDetector(
+                    onTap: leadingOnPressed,
+                    child: Container(
+                      margin: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(1),
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primaryColor,
+                      ),
+                      child: Icon(
+                        leadingIcon,
+                        size: 18,
+                      ),
+                    ),
+                  )
                 : null,
         title: title,
         actions: action,

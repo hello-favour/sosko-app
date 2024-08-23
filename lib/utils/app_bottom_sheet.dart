@@ -1,67 +1,96 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:sosko_app/features/screens/favorites/pages/favourites_view.dart';
+import 'package:sosko_app/features/screens/home/pages/home_view.dart';
+import 'package:sosko_app/features/screens/profile/pages/profile_view.dart';
+import 'package:sosko_app/features/screens/scan/pages/scan_view.dart';
+import 'package:sosko_app/features/screens/search/search_view.dart';
+import 'package:sosko_app/provider/bottom_sheet_provider.dart';
+import 'package:sosko_app/utils/constants/app_colors.dart';
+import 'package:sosko_app/utils/helper/helper_function.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:iconsax/iconsax.dart';
-// import 'package:sosko_app/utils/helper/helper_function.dart';
+class AppBottomSheet extends ConsumerWidget {
+  const AppBottomSheet({super.key});
 
-// class AppBottomSheet extends StatefulWidget {
-//   const AppBottomSheet({super.key});
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomeView(),
+    FavouritesView(),
+    ScanView(),
+    SearchView(),
+    ProfileView(),
+  ];
 
-//   @override
-//   // ignore: library_private_types_in_public_api
-//   _AppBottomSheetState createState() => _AppBottomSheetState();
-// }
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIndex = ref.watch(bottomNavIndexProvider);
+    final dark = HelperFunction.isDarkMode(context);
 
-// class _AppBottomSheetState extends State<AppBottomSheet> {
-//   int _selectedIndex = 0;
-
-//   static const List<Widget> _widgetOptions = <Widget>[
-//     HomeView(),
-//     ShiftView(),
-//     AvailabilityView(),
-//     ProfileView(),
-//   ];
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final dark = HelperFunction.isDarkMode(context);
-//     return Scaffold(
-//       body: Center(
-//         child: _widgetOptions.elementAt(_selectedIndex),
-//       ),
-//       bottomNavigationBar: BottomNavigationBar(
-//         type: BottomNavigationBarType.fixed,
-//         items: const <BottomNavigationBarItem>[
-//           BottomNavigationBarItem(
-//             icon: Icon(Iconsax.home),
-//             label: 'Home',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Iconsax.timer),
-//             label: 'Shift',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Iconsax.calendar_2),
-//             label: 'Availability',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Iconsax.profile_circle),
-//             label: 'Profile',
-//           ),
-//         ],
-//         currentIndex: _selectedIndex,
-//         selectedItemColor: dark ? AppColors.primaryColor : AppColors.colorBlack,
-//         // backgroundColor: AppColors.colorWhite,
-//         unselectedItemColor:
-//             dark ? AppColors.colorWhite : AppColors.colorDarkGrey,
-//         unselectedLabelStyle: const TextStyle(color: AppColors.colorBlack),
-//         onTap: _onItemTapped,
-//       ),
-//     );
-//   }
-// }
+    return Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(selectedIndex),
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: dark ? Colors.black : Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        // padding: const EdgeInsets.only(top: 8),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          items: [
+            const BottomNavigationBarItem(
+              icon: Icon(Iconsax.home),
+              label: '',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Iconsax.heart),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: dark ? AppColors.primaryColor : AppColors.colorBlack,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Iconsax.scan,
+                  size: 36,
+                  color: Colors.white,
+                ),
+              ),
+              label: '',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Iconsax.search_normal),
+              label: '',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Iconsax.profile_circle),
+              label: '',
+            ),
+          ],
+          currentIndex: selectedIndex,
+          selectedItemColor:
+              dark ? AppColors.primaryColor : AppColors.colorBlack,
+          unselectedItemColor:
+              dark ? AppColors.colorWhite : AppColors.colorDarkGrey,
+          onTap: (index) {
+            if (index == 2) {
+              // Handle Scan button separately if needed
+              Navigator.pushNamed(context, "/scanView");
+              return;
+            }
+            ref.read(bottomNavIndexProvider.notifier).state = index;
+          },
+        ),
+      ),
+    );
+  }
+}

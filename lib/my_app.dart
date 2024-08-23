@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sosko_app/features/authentication/otp_view.dart';
-import 'package:sosko_app/features/splash/splash_view.dart';
 import 'package:sosko_app/routes/app_router.dart';
+import 'package:sosko_app/utils/app_bottom_sheet.dart';
 
 import 'utils/theme/custom_themes/get_themedata.dart';
 import 'utils/theme/theme_notifier.dart';
@@ -25,7 +25,7 @@ class MyApp extends ConsumerWidget {
           : themeMode == AppThemeMode.dark
               ? ThemeMode.dark
               : ThemeMode.light,
-      home: const OTPView(),
+      home: const AppBottomSheet(),
       onGenerateRoute: appRouter.onGenerateRoute,
     );
   }

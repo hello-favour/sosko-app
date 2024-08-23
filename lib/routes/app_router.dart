@@ -3,7 +3,9 @@ import 'package:sosko_app/features/authentication/get_started_view.dart';
 import 'package:sosko_app/features/authentication/login_view.dart';
 import 'package:sosko_app/features/authentication/otp_view.dart';
 import 'package:sosko_app/features/authentication/sign_up_view.dart';
+import 'package:sosko_app/features/screens/scan/pages/scan_view.dart';
 import 'package:sosko_app/features/splash/splash_view.dart';
+import 'package:sosko_app/utils/app_bottom_sheet.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -18,6 +20,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SignUpView());
       case "/OTPView":
         return MaterialPageRoute(builder: (context) => const OTPView());
+      case "/scanView":
+        return MaterialPageRoute(builder: (context) => const ScanView());
+      case "/bottomSheetBar":
+        return MaterialPageRoute(builder: (context) => const AppBottomSheet());
       default:
         return null;
     }
