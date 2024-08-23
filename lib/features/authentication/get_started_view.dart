@@ -31,7 +31,21 @@ class GetStartedView extends ConsumerWidget {
               const SizedBox(
                 height: AppSizes.spaceBtwItems / 5,
               ),
-              const AppRichText(),
+              CustomRichText(
+                textSpans: [
+                  TextSpan(
+                      text: 'Welcome to ',
+                      style: Theme.of(context).textTheme.bodyMedium),
+                  TextSpan(
+                      text: 'SOSKO!',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: AppColors.primaryColor,
+                          )),
+                  TextSpan(
+                      text: ' Let’s shop together',
+                      style: Theme.of(context).textTheme.bodyMedium),
+                ],
+              ),
               const SizedBox(
                 height: AppSizes.appbarHeight,
               ),
@@ -44,7 +58,9 @@ class GetStartedView extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppSizes.lg),
                   child: AppButton(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, "/loginVIew");
+                    },
                     title: "Let's Start",
                   ),
                 ),

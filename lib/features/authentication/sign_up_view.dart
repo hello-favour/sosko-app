@@ -7,8 +7,8 @@ import 'package:sosko_app/utils/constants/app_colors.dart';
 import 'package:sosko_app/utils/constants/sizes.dart';
 import 'package:sosko_app/widgets/app_button.dart';
 
-class LoginView extends ConsumerWidget {
-  const LoginView({super.key});
+class SignUpView extends ConsumerWidget {
+  const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,14 +24,29 @@ class LoginView extends ConsumerWidget {
                 height: AppSizes.imageThumbSize,
               ),
               Text(
-                "Welcome to",
+                "Create your",
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               Text(
-                "SOSKO.",
+                "Account",
                 style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                       color: AppColors.primaryColor,
                     ),
+              ),
+              const SizedBox(
+                height: AppSizes.spaceBtwInputFields * 2,
+              ),
+              const TextField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  fillColor: AppColors.colorGrey,
+                  filled: true,
+                  labelText: 'Enter name',
+                  hintText: 'Enter name',
+                  prefixIcon: Icon(
+                    Iconsax.user,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: AppSizes.spaceBtwInputFields * 2,
@@ -62,25 +77,12 @@ class LoginView extends ConsumerWidget {
                     Iconsax.lock,
                   ),
                   suffixIcon: Icon(
-                    Iconsax.eye_slash,
+                    Iconsax.eye,
                   ),
                 ),
               ),
               const SizedBox(
                 height: AppSizes.spaceBtwInputFields,
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Forgot Password?",
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
-                ),
               ),
               const SizedBox(
                 height: AppSizes.spaceBtwInputFields,
@@ -90,7 +92,7 @@ class LoginView extends ConsumerWidget {
                 width: double.infinity,
                 child: AppButton(
                   onTap: () {},
-                  title: "Log in",
+                  title: "Sign Up",
                 ),
               ),
               const SizedBox(
@@ -100,7 +102,13 @@ class LoginView extends ConsumerWidget {
                 child: CustomRichText(
                   textSpans: [
                     TextSpan(
-                      text: "Don't have an account? ",
+                      text: "Already have account? ",
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                    TextSpan(
+                      text: " please ",
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
@@ -109,9 +117,10 @@ class LoginView extends ConsumerWidget {
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           // Handle tap here
-                          Navigator.pushNamed(context, "/signUpView");
+                          print('Loin In tapped!');
+                          Navigator.pushNamed(context, "/loginVIew");
                         },
-                      text: 'Sign In!',
+                      text: 'Log in!',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w600,

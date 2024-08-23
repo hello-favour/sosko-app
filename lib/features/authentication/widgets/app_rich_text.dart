@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:sosko_app/utils/constants/app_colors.dart';
 
-class AppRichText extends StatelessWidget {
-  const AppRichText({
+class CustomRichText extends StatelessWidget {
+  final List<TextSpan> textSpans;
+  final Color? highlightColor;
+  final TextStyle? style;
+
+  const CustomRichText({
     super.key,
+    required this.textSpans,
+    this.highlightColor,
+    this.style,
   });
 
   @override
   Widget build(BuildContext context) {
+    final defaultStyle = style ?? Theme.of(context).textTheme.bodyMedium;
     return RichText(
       textAlign: TextAlign.center,
-      text: TextSpan(children: [
-        TextSpan(
-          text: 'Welcome to ',
-          style: Theme.of(context).textTheme.bodyMedium,
+      text: TextSpan(
+        children: textSpans,
+        style: defaultStyle?.copyWith(
+          color: highlightColor ?? defaultStyle.color,
         ),
-        TextSpan(
-          text: 'SOSKO! ',
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: AppColors.primaryColor,
-              ),
-        ),
-        TextSpan(
-          text: 'lets shop together',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-      ]),
+      ),
     );
   }
 }
