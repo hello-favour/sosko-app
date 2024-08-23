@@ -9,11 +9,11 @@ class APPTextFieldTheme {
     prefixIconColor: AppColors.colorDarkGrey,
     suffixIconColor: AppColors.colorDarkGrey,
     labelStyle: const TextStyle().copyWith(
-      fontSize: 14,
+      fontSize: 18,
       color: AppColors.colorDarkGrey,
     ),
     hintStyle: const TextStyle().copyWith(
-      fontSize: 14,
+      fontSize: 18,
       color: AppColors.colorDarkGrey,
     ),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
@@ -57,9 +57,9 @@ class APPTextFieldTheme {
     prefixIconColor: AppColors.colorDarkGrey,
     suffixIconColor: AppColors.colorDarkGrey,
     labelStyle: const TextStyle()
-        .copyWith(fontSize: 14, color: AppColors.colorDarkGrey),
+        .copyWith(fontSize: 18, color: AppColors.colorDarkGrey),
     hintStyle: const TextStyle()
-        .copyWith(fontSize: 14, color: AppColors.colorDarkGrey),
+        .copyWith(fontSize: 18, color: AppColors.colorDarkGrey),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle: const TextStyle()
         .copyWith(color: AppColors.colorDarkGrey.withOpacity(0.5)),
