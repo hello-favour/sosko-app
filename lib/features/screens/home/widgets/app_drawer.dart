@@ -93,7 +93,7 @@ class AppDrawer extends ConsumerWidget {
             drawerTitles(
               context,
               "Settings",
-              () {},
+              () => Navigator.pushNamed(context, "/settingsView"),
             ),
             const SizedBox(
               height: AppSizes.appbarHeight,
