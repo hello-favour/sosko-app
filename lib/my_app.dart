@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sosko_app/features/authentication/otp_view.dart';
 import 'package:sosko_app/routes/app_router.dart';
 import 'package:sosko_app/utils/app_bottom_sheet.dart';
 
