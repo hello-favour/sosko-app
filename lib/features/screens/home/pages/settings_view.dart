@@ -71,7 +71,7 @@ class SettingsView extends ConsumerWidget {
                 icon: Iconsax.global,
                 bgColor: AppColors.languageBG,
                 title: 'Language',
-                onTap: () {},
+                onTap: () => Navigator.pushNamed(context, "/languageView"),
               ),
               const SizedBox(
                 height: AppSizes.spaceBtwSections,

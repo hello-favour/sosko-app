@@ -37,9 +37,9 @@ class SignUpView extends ConsumerWidget {
                 height: AppSizes.spaceBtwInputFields * 2,
               ),
               const TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
-                  fillColor: AppColors.colorGrey,
+                  fillColor: AppColors.textFieldBG,
                   filled: true,
                   labelText: 'Enter name',
                   hintText: 'Enter name',
@@ -52,9 +52,9 @@ class SignUpView extends ConsumerWidget {
                 height: AppSizes.spaceBtwInputFields * 2,
               ),
               const TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  fillColor: AppColors.colorGrey,
+                  fillColor: AppColors.textFieldBG,
                   filled: true,
                   labelText: 'Email address',
                   hintText: 'Email address',
@@ -67,9 +67,9 @@ class SignUpView extends ConsumerWidget {
                 height: AppSizes.spaceBtwInputFields * 2,
               ),
               const TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
-                  fillColor: AppColors.colorGrey,
+                  fillColor: AppColors.textFieldBG,
                   filled: true,
                   labelText: 'Password',
                   hintText: 'Password',
@@ -91,7 +91,7 @@ class SignUpView extends ConsumerWidget {
               SizedBox(
                 width: double.infinity,
                 child: AppButton(
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, "/OTPView"),
                   title: "Sign Up",
                 ),
               ),

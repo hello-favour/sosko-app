@@ -37,9 +37,10 @@ class LoginView extends ConsumerWidget {
                 height: AppSizes.spaceBtwInputFields * 2,
               ),
               const TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  fillColor: AppColors.colorGrey,
+                  fillColor: AppColors.textFieldBG,
+                  border: InputBorder.none,
                   filled: true,
                   labelText: 'Email address',
                   hintText: 'Email address',
@@ -52,9 +53,9 @@ class LoginView extends ConsumerWidget {
                 height: AppSizes.spaceBtwInputFields * 2,
               ),
               const TextField(
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: InputDecoration(
-                  fillColor: AppColors.colorGrey,
+                  fillColor: AppColors.textFieldBG,
                   filled: true,
                   labelText: 'Password',
                   hintText: 'Password',
@@ -89,7 +90,7 @@ class LoginView extends ConsumerWidget {
               SizedBox(
                 width: double.infinity,
                 child: AppButton(
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, "/OTPView"),
                   title: "Log in",
                 ),
               ),
@@ -108,7 +109,6 @@ class LoginView extends ConsumerWidget {
                     TextSpan(
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Handle tap here
                           Navigator.pushNamed(context, "/signUpView");
                         },
                       text: 'Sign In!',

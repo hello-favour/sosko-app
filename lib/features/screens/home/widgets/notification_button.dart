@@ -17,8 +17,8 @@ class NotificationButton extends StatelessWidget {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              blurRadius: 0.4,
-              spreadRadius: 3,
+              blurRadius: 0.2,
+              spreadRadius: 1,
               color: AppColors.colorBlack,
             ),
           ],

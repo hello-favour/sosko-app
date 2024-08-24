@@ -48,6 +48,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                       child: Icon(
                         leadingIcon,
                         size: 18,
+                        color: Colors.white,
                       ),
                     ),
                   )

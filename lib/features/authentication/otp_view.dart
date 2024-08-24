@@ -44,7 +44,7 @@ class OTPView extends ConsumerWidget {
                 textAlignVertical: TextAlignVertical.center,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  fillColor: AppColors.colorGrey,
+                  fillColor: AppColors.textFieldBG,
                   filled: true,
                   labelText: 'Enter Code',
                   alignLabelWithHint: true,
@@ -79,7 +79,7 @@ class OTPView extends ConsumerWidget {
               SizedBox(
                 width: double.infinity,
                 child: AppButton(
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, "/bottomSheetBar"),
                   title: "Confirm",
                 ),
               ),

@@ -37,8 +37,14 @@ class AppBottomSheet extends ConsumerWidget {
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 0.2,
+              spreadRadius: 1,
+              color: AppColors.colorGrey,
+            ),
+          ],
         ),
-        // padding: const EdgeInsets.only(top: 8),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.transparent,
@@ -55,8 +61,8 @@ class AppBottomSheet extends ConsumerWidget {
             BottomNavigationBarItem(
               icon: Container(
                 padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: dark ? AppColors.primaryColor : AppColors.colorBlack,
+                decoration: const BoxDecoration(
+                  color: AppColors.primaryColor,
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -83,7 +89,6 @@ class AppBottomSheet extends ConsumerWidget {
               dark ? AppColors.colorWhite : AppColors.colorDarkGrey,
           onTap: (index) {
             if (index == 2) {
-              // Handle Scan button separately if needed
               Navigator.pushNamed(context, "/scanView");
               return;
             }
