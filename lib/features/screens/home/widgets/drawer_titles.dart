@@ -28,6 +28,7 @@ Widget drawerTitles(BuildContext context, String title, VoidCallback onTap,
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontWeight: isBold ? FontWeight.bold : FontWeight.w600,
                 fontSize: isBold ? 20 : 14,
+                color: AppColors.colorWhite,
               ),
         ),
       ),

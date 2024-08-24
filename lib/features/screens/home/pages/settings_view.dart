@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sosko_app/features/screens/home/widgets/profile_drawer_card.dart';
 import 'package:sosko_app/features/screens/home/widgets/settings_row.dart';
+import 'package:sosko_app/provider/bottom_sheet_provider.dart';
+import 'package:sosko_app/provider/selected_language_provider.dart';
 import 'package:sosko_app/utils/constants/app_colors.dart';
 import 'package:sosko_app/utils/constants/app_image.dart';
 import 'package:sosko_app/utils/constants/sizes.dart';
@@ -16,13 +18,18 @@ class SettingsView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentThemeMode = ref.watch(themeProvider);
     final isDarkMode = currentThemeMode == AppThemeMode.dark;
+    final selectedLanguage = ref.watch(selectedLanguageProvider);
+
     return Scaffold(
       appBar: MyAppBar(
         title: Text(
           "Settings",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
-        leadingOnPressed: () {},
+        leadingOnPressed: () {
+          ref.read(bottomNavIndexProvider.notifier).state = 0;
+          Navigator.pushNamed(context, "/bottomSheetBar");
+        },
         leadingIcon: Iconsax.arrow_left,
         showBackArrow: false,
       ),
@@ -70,6 +77,7 @@ class SettingsView extends ConsumerWidget {
                 iconColor: AppColors.colorRed,
                 icon: Iconsax.global,
                 bgColor: AppColors.languageBG,
+                selectedLanguage: selectedLanguage,
                 title: 'Language',
                 onTap: () => Navigator.pushNamed(context, "/languageView"),
               ),

@@ -3,7 +3,7 @@ import 'package:sosko_app/features/authentication/get_started_view.dart';
 import 'package:sosko_app/features/authentication/login_view.dart';
 import 'package:sosko_app/features/authentication/otp_view.dart';
 import 'package:sosko_app/features/authentication/sign_up_view.dart';
-import 'package:sosko_app/features/screens/home/pages/language_view.dart';
+import 'package:sosko_app/features/screens/home/pages/language_select_view.dart';
 import 'package:sosko_app/features/screens/home/pages/settings_view.dart';
 import 'package:sosko_app/features/screens/profile/pages/profile_view.dart';
 import 'package:sosko_app/features/screens/scan/pages/scan_view.dart';
@@ -32,7 +32,8 @@ class AppRouter {
       case "/profileView":
         return MaterialPageRoute(builder: (context) => const ProfileView());
       case "/languageView":
-        return MaterialPageRoute(builder: (context) => const LanguageView());
+        return MaterialPageRoute(
+            builder: (context) => const LanguageSelectView());
       default:
         return null;
     }

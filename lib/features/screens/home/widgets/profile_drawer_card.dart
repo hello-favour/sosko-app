@@ -34,9 +34,16 @@ class ProfileDrawerCard extends StatelessWidget {
           children: [
             Text(
               name,
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: AppColors.colorWhite,
+                  ),
             ),
-            Text(emailAddress, style: Theme.of(context).textTheme.bodySmall!),
+            Text(
+              emailAddress,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: AppColors.colorWhite,
+                  ),
+            ),
           ],
         ),
         Expanded(child: Container()),

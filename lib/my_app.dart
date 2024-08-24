@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sosko_app/features/screens/home/pages/settings_view.dart';
 import 'package:sosko_app/features/splash/splash_view.dart';
 import 'package:sosko_app/routes/app_router.dart';
 

@@ -10,6 +10,7 @@ class SettingsRow extends StatelessWidget {
   final VoidCallback onTap;
   final Color iconColor;
   final bool isDarkMode;
+  final String? selectedLanguage;
   final ValueChanged<bool>? onSwitchChanged;
 
   const SettingsRow({
@@ -21,6 +22,7 @@ class SettingsRow extends StatelessWidget {
     required this.iconColor,
     this.isDarkMode = false,
     this.onSwitchChanged,
+    this.selectedLanguage,
   });
 
   @override
@@ -53,7 +55,7 @@ class SettingsRow extends StatelessWidget {
                 children: [
                   if (title == "Language")
                     Text(
-                      "EN",
+                      selectedLanguage.toString(),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   const SizedBox(width: 5),
