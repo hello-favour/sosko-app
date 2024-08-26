@@ -60,7 +60,7 @@ class AppDrawer extends ConsumerWidget {
             drawerTitles(
               context,
               "History",
-              () {},
+              () => Navigator.pushNamed(context, "/historyView"),
             ),
             const SizedBox(
               height: AppSizes.spaceBtwItems,

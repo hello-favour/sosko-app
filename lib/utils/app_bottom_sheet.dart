@@ -37,13 +37,6 @@ class AppBottomSheet extends ConsumerWidget {
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
-          boxShadow: const [
-            BoxShadow(
-              blurRadius: 0.2,
-              spreadRadius: 1,
-              color: AppColors.colorGrey,
-            ),
-          ],
         ),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

@@ -7,15 +7,15 @@ import 'package:sosko_app/utils/constants/app_colors.dart';
 import 'package:sosko_app/utils/constants/sizes.dart';
 import 'package:sosko_app/widgets/app_bar.dart';
 
-class FavouritesView extends ConsumerWidget {
-  const FavouritesView({super.key});
+class HistoryView extends ConsumerWidget {
+  const HistoryView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: MyAppBar(
         title: Text(
-          "Favorites",
+          "History",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         leadingOnPressed: () {},
