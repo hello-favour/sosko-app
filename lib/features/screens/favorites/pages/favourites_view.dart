@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sosko_app/features/screens/favorites/widgets/color_generation.dart';
+import 'package:sosko_app/utils/constants/color_generation.dart';
 import 'package:sosko_app/features/screens/favorites/widgets/product.dart';
 import 'package:sosko_app/utils/constants/app_colors.dart';
 import 'package:sosko_app/utils/constants/sizes.dart';

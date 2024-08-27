@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sosko_app/features/screens/favorites/widgets/color_generation.dart';
-import 'package:sosko_app/features/screens/favorites/widgets/product.dart';
+import 'package:sosko_app/features/screens/history/widgets/product.dart';
+import 'package:sosko_app/provider/bottom_sheet_provider.dart';
 import 'package:sosko_app/utils/constants/app_colors.dart';
 import 'package:sosko_app/utils/constants/sizes.dart';
 import 'package:sosko_app/widgets/app_bar.dart';
@@ -18,7 +18,10 @@ class HistoryView extends ConsumerWidget {
           "History",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
-        leadingOnPressed: () {},
+        leadingOnPressed: () {
+          ref.read(bottomNavIndexProvider.notifier).state = 0;
+          Navigator.pushNamed(context, "/bottomSheetBar");
+        },
         leadingIcon: Iconsax.arrow_left,
         showBackArrow: false,
       ),
@@ -26,10 +29,10 @@ class HistoryView extends ConsumerWidget {
         child: Padding(
           padding:
               const EdgeInsets.symmetric(horizontal: AppSizes.buttonWidth / 5),
-          child: products.isEmpty
+          child: historyProducts.isEmpty
               ? Center(
                   child: Text(
-                    "No items in your favorites list.",
+                    "No items in your history list.",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 )
@@ -42,64 +45,74 @@ class HistoryView extends ConsumerWidget {
                     mainAxisSpacing: 20.0,
                     childAspectRatio: 0.6,
                   ),
-                  itemCount: products.length,
+                  itemCount: historyProducts.length,
                   itemBuilder: (context, index) {
-                    final product = products[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    final product = historyProducts[index];
+                    return Stack(
+                      clipBehavior: Clip.none,
                       children: [
-                        Container(
-                          height: 180.0,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.circular(12.0),
-                            image: DecorationImage(
-                              image: AssetImage(product['image'].toString()),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: AppSizes.spaceBtwItems),
-                        Text(
-                          product['name'].toString(),
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                        ),
-                        const SizedBox(height: AppSizes.spaceBtwItems),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: const EdgeInsets.all(8),
+                              height: 180.0,
+                              width: double.infinity,
                               decoration: BoxDecoration(
-                                color: getRandomBackgroundColor(),
-                                borderRadius: BorderRadius.circular(
-                                    AppSizes.buttonRadius),
-                              ),
-                              child: Text(
-                                product['description'].toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                      color: getRandomTextColor(),
-                                    ),
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(12.0),
+                                image: DecorationImage(
+                                  image: AssetImage(product['image']
+                                      .toString()), // Corrected usage
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
-                            Flexible(
-                              child: Text(
-                                '\$${product['price']}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(color: AppColors.colorBlack),
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Text(
+                              product['name'].toString(),
+                              style: Theme.of(context).textTheme.bodyLarge!,
+                            ),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    '\$${product['price']}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                Text(
+                                  product['description'].toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        color: product['color'] as Color?,
+                                      ),
+                                ),
+                              ],
                             ),
                           ],
+                        ),
+                        Positioned(
+                          top: -5,
+                          right: 0,
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              color: AppColors.primaryColor,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.cloud_download),
+                          ),
                         ),
                       ],
                     );
