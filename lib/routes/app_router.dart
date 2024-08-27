@@ -5,6 +5,8 @@ import 'package:sosko_app/features/authentication/otp_view.dart';
 import 'package:sosko_app/features/authentication/sign_up_view.dart';
 import 'package:sosko_app/features/screens/history/history_view.dart';
 import 'package:sosko_app/features/screens/home/pages/language_select_view.dart';
+import 'package:sosko_app/features/screens/home/pages/see_all_popular.dart';
+import 'package:sosko_app/features/screens/home/pages/see_all_special.dart';
 import 'package:sosko_app/features/screens/home/pages/settings_view.dart';
 import 'package:sosko_app/features/screens/profile/pages/profile_view.dart';
 import 'package:sosko_app/features/screens/scan/pages/scan_view.dart';
@@ -37,7 +39,10 @@ class AppRouter {
             builder: (context) => const LanguageSelectView());
       case "/historyView":
         return MaterialPageRoute(builder: (context) => const HistoryView());
-
+      case "/seeAllPopular":
+        return MaterialPageRoute(builder: (context) => const SeeAllPopular());
+      case "/seeAllSpecial":
+        return MaterialPageRoute(builder: (context) => const SeeAllSpecial());
       default:
         return null;
     }
