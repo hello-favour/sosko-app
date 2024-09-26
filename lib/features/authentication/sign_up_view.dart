@@ -120,7 +120,7 @@ class SignUpView extends ConsumerWidget {
                           print('Loin In tapped!');
                           Navigator.pushNamed(context, "/loginVIew");
                         },
-                      text: 'Log in!',
+                      text: 'Log In',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w600,

@@ -91,7 +91,7 @@ class LoginView extends ConsumerWidget {
                 width: double.infinity,
                 child: AppButton(
                   onTap: () => Navigator.pushNamed(context, "/OTPView"),
-                  title: "Log in",
+                  title: "Log In",
                 ),
               ),
               const SizedBox(
@@ -111,7 +111,7 @@ class LoginView extends ConsumerWidget {
                         ..onTap = () {
                           Navigator.pushNamed(context, "/signUpView");
                         },
-                      text: 'Sign In!',
+                      text: 'Sign In',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w600,

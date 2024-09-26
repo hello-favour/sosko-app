@@ -40,10 +40,10 @@ class OTPView extends ConsumerWidget {
                 height: AppSizes.spaceBtwInputFields * 2,
               ),
               const TextField(
-                textAlign: TextAlign.center,
                 textAlignVertical: TextAlignVertical.center,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 10),
                   fillColor: AppColors.textFieldBG,
                   filled: true,
                   labelText: 'Enter Code',
@@ -58,7 +58,7 @@ class OTPView extends ConsumerWidget {
                 child: CustomRichText(
                   textSpans: [
                     TextSpan(
-                      text: "Didn't received yet? ",
+                      text: "Didn't receive yet? ",
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w600,
                           ),

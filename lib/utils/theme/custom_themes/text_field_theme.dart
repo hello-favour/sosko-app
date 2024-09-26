@@ -15,7 +15,7 @@ class APPTextFieldTheme {
     ),
     hintStyle: const TextStyle().copyWith(
       fontSize: 18,
-      color: AppColors.colorGrey,
+      color: AppColors.colorBlack,
     ),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle: const TextStyle().copyWith(color: AppColors.colorGrey),
@@ -60,7 +60,7 @@ class APPTextFieldTheme {
     labelStyle:
         const TextStyle().copyWith(fontSize: 18, color: AppColors.colorGrey),
     hintStyle:
-        const TextStyle().copyWith(fontSize: 18, color: AppColors.colorGrey),
+        const TextStyle().copyWith(fontSize: 18, color: AppColors.colorBlack),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle:
         const TextStyle().copyWith(color: AppColors.colorGrey.withOpacity(0.5)),

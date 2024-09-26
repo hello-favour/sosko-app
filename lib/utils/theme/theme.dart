@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sosko_app/utils/constants/app_colors.dart';
+import 'package:sosko_app/utils/theme/custom_themes/outline_button_theme.dart';
 import 'custom_themes/appbar_theme.dart';
 import 'custom_themes/chip_theme.dart';
 import 'custom_themes/elevated_button_theme.dart';
@@ -18,6 +19,7 @@ class AppTheme {
     chipTheme: AppChipTheme.lightChipTheme,
     scaffoldBackgroundColor: AppColors.colorWhite,
     textTheme: AppTextTheme.lightTextTheme,
+    outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
     elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
     inputDecorationTheme: APPTextFieldTheme.lightInputDecorationTheme,
     appBarTheme: AppbarTheme.lightAppbarTheme,
@@ -32,6 +34,7 @@ class AppTheme {
     chipTheme: AppChipTheme.lightChipTheme,
     scaffoldBackgroundColor: AppColors.colorWhite,
     textTheme: AppTextTheme.lightTextTheme,
+    outlinedButtonTheme: AppOutlinedButtonTheme.darkOutlinedButtonTheme,
     elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
     inputDecorationTheme: APPTextFieldTheme.darkInputDecorationTheme,
     appBarTheme: AppbarTheme.darkAppbarTheme,

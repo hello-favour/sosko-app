@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sosko_app/utils/constants/app_colors.dart';
 import 'package:sosko_app/utils/constants/app_image.dart';
 import 'package:sosko_app/utils/constants/sizes.dart';
+import 'package:sosko_app/utils/theme/theme_notifier.dart';
 
-class HomeBanner extends StatelessWidget {
+class HomeBanner extends ConsumerWidget {
   const HomeBanner({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentThemeMode = ref.watch(themeProvider);
+    final isDarkMode = currentThemeMode == AppThemeMode.dark;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSizes.md),
       decoration: BoxDecoration(
-        color: AppColors.textFieldBG,
+        color: isDarkMode ? AppColors.textFieldBG : AppColors.textFieldBG,
         borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
       ),
       child: Row(
@@ -34,6 +38,9 @@ class HomeBanner extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
+                      color: isDarkMode
+                          ? AppColors.colorWhite
+                          : AppColors.colorBlack,
                     ),
               ),
               const SizedBox(height: AppSizes.sm),

@@ -3,8 +3,10 @@ import 'package:sosko_app/features/authentication/get_started_view.dart';
 import 'package:sosko_app/features/authentication/login_view.dart';
 import 'package:sosko_app/features/authentication/otp_view.dart';
 import 'package:sosko_app/features/authentication/sign_up_view.dart';
+import 'package:sosko_app/features/cart/pages/user_cart_page.dart';
 import 'package:sosko_app/features/screens/history/history_view.dart';
 import 'package:sosko_app/features/screens/home/pages/language_select_view.dart';
+import 'package:sosko_app/features/screens/home/pages/product_details.dart';
 import 'package:sosko_app/features/screens/home/pages/see_all_popular.dart';
 import 'package:sosko_app/features/screens/home/pages/see_all_special.dart';
 import 'package:sosko_app/features/screens/home/pages/settings_view.dart';
@@ -43,6 +45,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SeeAllPopular());
       case "/seeAllSpecial":
         return MaterialPageRoute(builder: (context) => const SeeAllSpecial());
+      case "/userCart":
+        return MaterialPageRoute(builder: (context) => const UserCartPage());
+      case "/productDetails":
+        return MaterialPageRoute(builder: (context) => const ProductDetails());
       default:
         return null;
     }

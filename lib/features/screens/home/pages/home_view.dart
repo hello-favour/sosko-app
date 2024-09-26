@@ -38,7 +38,9 @@ class HomeView extends ConsumerWidget {
         showBackArrow: false,
         action: [
           NotificationButton(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, "/userCart");
+            },
           ),
         ],
       ),
@@ -94,69 +96,75 @@ class HomeView extends ConsumerWidget {
                   itemCount: specialProduct.length,
                   itemBuilder: (context, index) {
                     final product = specialProduct[index];
-                    return Container(
-                      width: 200.0,
-                      margin: const EdgeInsets.only(right: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 11 / 9,
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(12.0),
-                                image: DecorationImage(
-                                  image:
-                                      AssetImage(product['image'].toString()),
-                                  fit: BoxFit.contain,
+                    return GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/productDetails"),
+                      child: Container(
+                        width: 200.0,
+                        margin: const EdgeInsets.only(right: 20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AspectRatio(
+                              aspectRatio: 11 / 9,
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage(product['image'].toString()),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: AppSizes.spaceBtwItems),
-                          Text(
-                            product['name'].toString(),
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                          ),
-                          const SizedBox(height: AppSizes.spaceBtwItems),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: getRandomBackgroundColor(),
-                                  borderRadius: BorderRadius.circular(
-                                      AppSizes.buttonRadius),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Text(
+                              product['name'].toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: getRandomBackgroundColor(),
+                                    borderRadius: BorderRadius.circular(
+                                        AppSizes.buttonRadius),
+                                  ),
+                                  child: Text(
+                                    product['description'].toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: getRandomTextColor(),
+                                        ),
+                                  ),
                                 ),
-                                child: Text(
-                                  product['description'].toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(
-                                        color: getRandomTextColor(),
-                                      ),
+                                Flexible(
+                                  child: Text(
+                                    '\$${product['price']}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(color: AppColors.colorBlack),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  '\$${product['price']}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(color: AppColors.colorBlack),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -179,68 +187,74 @@ class HomeView extends ConsumerWidget {
                   itemCount: popularProducts.length,
                   itemBuilder: (context, index) {
                     final product = popularProducts[index];
-                    return Container(
-                      width: 200.0,
-                      margin: const EdgeInsets.only(right: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 11 / 9,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(12.0),
-                                image: DecorationImage(
-                                  image:
-                                      AssetImage(product['image'].toString()),
-                                  fit: BoxFit.contain,
+                    return GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/productDetails"),
+                      child: Container(
+                        width: 200.0,
+                        margin: const EdgeInsets.only(right: 20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AspectRatio(
+                              aspectRatio: 11 / 9,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage(product['image'].toString()),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: AppSizes.spaceBtwItems),
-                          Text(
-                            product['name'].toString(),
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                          ),
-                          const SizedBox(height: AppSizes.spaceBtwItems),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: getRandomBackgroundColor(),
-                                  borderRadius: BorderRadius.circular(
-                                      AppSizes.buttonRadius),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Text(
+                              product['name'].toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: getRandomBackgroundColor(),
+                                    borderRadius: BorderRadius.circular(
+                                        AppSizes.buttonRadius),
+                                  ),
+                                  child: Text(
+                                    product['description'].toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: getRandomTextColor(),
+                                        ),
+                                  ),
                                 ),
-                                child: Text(
-                                  product['description'].toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(
-                                        color: getRandomTextColor(),
-                                      ),
+                                Flexible(
+                                  child: Text(
+                                    '\$${product['price']}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(color: AppColors.colorBlack),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  '\$${product['price']}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(color: AppColors.colorBlack),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -249,7 +263,7 @@ class HomeView extends ConsumerWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
               homeRow(
                 context,
-                title: "Popular Products",
+                title: "Your Products",
                 seeAll: "See all",
                 onTap: () => Navigator.pushNamed(context, "/seeAllPopular"),
               ),
@@ -263,68 +277,74 @@ class HomeView extends ConsumerWidget {
                   itemCount: products.length,
                   itemBuilder: (context, index) {
                     final product = products[index];
-                    return Container(
-                      width: 200.0,
-                      margin: const EdgeInsets.only(right: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 11 / 9,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(12.0),
-                                image: DecorationImage(
-                                  image:
-                                      AssetImage(product['image'].toString()),
-                                  fit: BoxFit.contain,
+                    return GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/productDetails"),
+                      child: Container(
+                        width: 200.0,
+                        margin: const EdgeInsets.only(right: 20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AspectRatio(
+                              aspectRatio: 11 / 9,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage(product['image'].toString()),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: AppSizes.spaceBtwItems),
-                          Text(
-                            product['name'].toString(),
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                          ),
-                          const SizedBox(height: AppSizes.spaceBtwItems),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: getRandomBackgroundColor(),
-                                  borderRadius: BorderRadius.circular(
-                                      AppSizes.buttonRadius),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Text(
+                              product['name'].toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            const SizedBox(height: AppSizes.spaceBtwItems),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: getRandomBackgroundColor(),
+                                    borderRadius: BorderRadius.circular(
+                                        AppSizes.buttonRadius),
+                                  ),
+                                  child: Text(
+                                    product['description'].toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: getRandomTextColor(),
+                                        ),
+                                  ),
                                 ),
-                                child: Text(
-                                  product['description'].toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(
-                                        color: getRandomTextColor(),
-                                      ),
+                                Flexible(
+                                  child: Text(
+                                    '\$${product['price']}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(color: AppColors.colorBlack),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  '\$${product['price']}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(color: AppColors.colorBlack),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
